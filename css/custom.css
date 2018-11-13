@@ -1,0 +1,90 @@
+@import url(https://fonts.googleapis.com/css?family=Nanum+Gothic);
+@import url(https:////fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+h1, h2, h3, h4 {
+  font-family: 'Jeju Gothic';
+}
+body {
+  font-family: 'Nanum Gothic';
+}
+/* 네비게이션 메뉴들의 색상 정의 */
+#sidebar .list-group-item {
+  background-color: #333333;
+  color: #acacac;
+  border-color: #1c1c1c;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  white-space: nowrap;
+}
+/* 네비게이션 아래 끝까지 나열 */
+#sidebar .list-group {
+  background-color: #333333;
+  min-height: 100vh;
+}
+/* 메뉴를 선택했을 때 부모 요소의 색상을 변경해 줌 */
+#sidebar .list-group .list-group-item[aria-expanded="true"] {
+  background-color: #1c1c1c;
+}
+/* 메뉴를 선택했을 때 자식 요소의 색상을 변경해 줌 */
+#sidebar .list-group .list-group-item:not(.collapsed) {
+  background-color: #1c1c1c;
+}
+/* 부가설정 */
+#sidebar {
+  overflow: hidden;
+  z-index: 2;
+}
+@media (max-width: 768px) {
+  /* 작은화면에서는 왼쪽내비게이션 너비를 정해진 크기로 설정 */
+  #sidebar {
+    min-width: 35px;
+    max-width: 40px;
+    overflow-y: auto; /*높이*/
+    overflow-x: visible; /*너비*/
+    transition: all 0.25s ease; /*네비게이션이 작아졌다커졌다 할때 좀더 부드럽게 해주는거*/
+    transform: translateX(0px);
+    position: fixed;
+  }
+  /* 작은화면에서 서브메뉴를 열었을 때 글자가 보이도록 함 */
+  #sidebar, #sidebar .list-group {
+    min-width: 35px;
+    overflow: visible;
+  }
+  #sidebar .list-group .collapse.show, #sidebar .list-group .collapsing {
+    position: relative; /*상대적위치설정*/
+    z-index: 1; /*인덱스값을1로만듦*/
+    width: 190px;
+    top: 0;
+  }/*서브메뉴가 다 잘열리게하는 설정*/
+  /* 아이콘이 잘 보이게 하는거, 작아졌을 때 아이콘을 가운데로 정렬해 줌 */
+  #sidebar .list-group > .list-group-item {
+    text-align: center;
+    padding: .75rem .5rem;
+  }
+  #sidebar::-webkit-scrollbar { width: 0px; } /*브라우저에 상관없이 잘 보이게 하는거 */
+}
+#main {
+  height: 100vh; /*높이를 최고치로 설정해준다는 뜻 */
+  overflow-y: scroll; /* 너비가 큰경우는 알아서 스크롤생기게 한다는 뜻 */
+}
+@media (max-width: 768px) {
+  #main {
+    margin-left: 38px; /*왼쪽네비게이션 너비를 정해진크기로 만드는거*/
+  }
+}
+@media (max-width: 560px) {
+  .mobile {
+    display: none;
+  }
+}
+.boardTitle {
+  background-color: #efefef;
+  padding: 6px;
+}
+.boardContent {
+  background-color: #efefef;
+  padding: 6px;
+  height: 320px;
+  overflow-y: scroll; /*내용이 320px초과할경우 스크롤나오게하는거*/
+}
